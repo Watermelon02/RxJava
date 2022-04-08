@@ -1,6 +1,6 @@
 package xigua.fit.lib_rxjava.emitter
 
-import xigua.fit.lib_rxjava.Observer
+import xigua.fit.lib_rxjava.observer.Observer
 import xigua.fit.rxjava.disposable.Disposable
 import xigua.fit.lib_rxjava.disposable.DisposableHelper
 import java.util.concurrent.atomic.AtomicReference

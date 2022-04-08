@@ -1,5 +1,7 @@
-package xigua.fit.lib_rxjava
+package xigua.fit.lib_rxjava.observable
 
+import xigua.fit.lib_rxjava.ObservableOnSubscribe
+import xigua.fit.lib_rxjava.observer.Observer
 import xigua.fit.lib_rxjava.emitter.CreateEmitter
 import java.lang.Exception
 

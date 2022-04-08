@@ -1,4 +1,8 @@
-package xigua.fit.lib_rxjava
+package xigua.fit.lib_rxjava.observable
+
+import xigua.fit.lib_rxjava.ObservableOnSubscribe
+import xigua.fit.lib_rxjava.observer.Observer
+import xigua.fit.lib_rxjava.scheduler.Scheduler
 
 /**
  * author : Watermelon02
@@ -17,4 +21,8 @@ abstract class Observable<T> {
     }
 
     abstract fun subscribeActual(observer: Observer<T>)
+
+    fun observeOn(scheduler: Scheduler):Observable<T>{
+        return ObservableObserveOn(this,scheduler)
+    }
 }

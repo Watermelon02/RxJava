@@ -1,4 +1,4 @@
-package xigua.fit.lib_rxjava
+package xigua.fit.lib_rxjava.observer
 
 import xigua.fit.rxjava.disposable.Disposable
 
