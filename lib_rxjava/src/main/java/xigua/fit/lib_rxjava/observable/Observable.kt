@@ -25,4 +25,8 @@ abstract class Observable<T> {
     fun observeOn(scheduler: Scheduler):Observable<T>{
         return ObservableObserveOn(this,scheduler)
     }
+
+    fun subscribeOn(scheduler: Scheduler):Observable<T>{
+        return ObservableSubscribeOn(this,scheduler)
+    }
 }

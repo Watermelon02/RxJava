@@ -10,6 +10,8 @@ import java.util.concurrent.TimeUnit
 abstract class Scheduler {
     abstract fun createWorker():Worker
 
+    abstract fun scheduleActual(runnable: Runnable)
+
     abstract inner class Worker{
         abstract fun schedule(runnable: Runnable)
     }

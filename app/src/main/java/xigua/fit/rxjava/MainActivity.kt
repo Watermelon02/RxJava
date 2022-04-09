@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import io.reactivex.Scheduler
+import io.reactivex.internal.operators.observable.ObservableSubscribeOn
 import io.reactivex.schedulers.Schedulers
 import xigua.fit.lib_rxjava.observable.Observable
+import xigua.fit.lib_rxjava.observable.ObservableObserveOn
 import xigua.fit.lib_rxjava.observer.Observer
 import xigua.fit.lib_rxjava.scheduler.NewThreadScheduler
 import xigua.fit.rxjava.disposable.Disposable
@@ -14,13 +16,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        Schedulers.io()
-        Schedulers.newThread()
         Observable.create(object : xigua.fit.lib_rxjava.ObservableOnSubscribe<Int>() {
             override fun subscribe(observableEmitter: xigua.fit.lib_rxjava.emitter.ObservableEmitter<Int>) {
+                Log.d("testTag", "subscribe:${Thread.currentThread()} ")
                 observableEmitter.onNext(1)
             }
         })
+            .subscribeOn(NewThreadScheduler())
             .observeOn(NewThreadScheduler())
             .subscribe(object : Observer<Int> {
                 override fun onSubscribe(disposable: Disposable) {

@@ -14,6 +14,11 @@ class NewThreadScheduler: Scheduler() {
     override fun createWorker(): Worker {
         return NewThreadWorker()
     }
+
+    override fun scheduleActual(runnable: Runnable) {
+        threadPool.submit(runnable)
+    }
+
     inner class NewThreadWorker: Worker() {
         override fun schedule(runnable: Runnable) {
             threadPool.submit(runnable)
