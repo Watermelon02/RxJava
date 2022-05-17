@@ -29,4 +29,8 @@ abstract class Observable<T> {
     fun subscribeOn(scheduler: Scheduler):Observable<T>{
         return ObservableSubscribeOn(this,scheduler)
     }
+
+    fun doOnSubscribe(onSubscribe:()->Unit):Observable<T>{
+        return ObservableDoOnLifecycle<T>(onSubscribe)
+    }
 }

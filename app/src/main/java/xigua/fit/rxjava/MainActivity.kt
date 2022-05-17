@@ -3,6 +3,8 @@ package xigua.fit.rxjava
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import io.reactivex.ObservableEmitter
+import io.reactivex.ObservableOnSubscribe
 import io.reactivex.Scheduler
 import io.reactivex.internal.operators.observable.ObservableSubscribeOn
 import io.reactivex.schedulers.Schedulers
@@ -41,5 +43,6 @@ class MainActivity : AppCompatActivity() {
                     TODO("Not yet implemented")
                 }
             })
+        io.reactivex.Observable.create(ObservableOnSubscribe<Int> { TODO("Not yet implemented") }).subscribe()
     }
 }
