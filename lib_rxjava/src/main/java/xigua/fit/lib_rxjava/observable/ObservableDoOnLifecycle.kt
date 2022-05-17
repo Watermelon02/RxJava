@@ -11,7 +11,7 @@ import xigua.fit.lib_rxjava.observer.Observer
  */
 class ObservableDoOnLifecycle<T>(private val source:Observable<T>,private val onSubscribe:()->Unit) : Observable<T>() {
     override fun subscribeActual(observer: Observer<T>) {
-        val doOnLifecycleObserver = DoOnLifecycleObserver<T>(onSubscribe)
+        val doOnLifecycleObserver = DoOnLifecycleObserver(observer,onSubscribe)
         observer.onSubscribe(doOnLifecycleObserver)
        source.subscribe(doOnLifecycleObserver)
     }

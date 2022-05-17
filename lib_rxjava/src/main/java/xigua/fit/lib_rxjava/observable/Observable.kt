@@ -31,6 +31,18 @@ abstract class Observable<T> {
     }
 
     fun doOnSubscribe(onSubscribe:()->Unit):Observable<T>{
-        return ObservableDoOnLifecycle<T>(onSubscribe)
+        return ObservableDoOnLifecycle(this,onSubscribe)
+    }
+
+    fun doOnNext(onNext:(T)->Unit):Observable<T>{
+        return ObservableDoOnEach(this,onNext = onNext)
+    }
+
+    fun doOnError(onError:()->Unit):Observable<T>{
+        return ObservableDoOnEach(this,onError = onError)
+    }
+
+    fun doOnComplete(onComplete:()->Unit):Observable<T>{
+        return ObservableDoOnEach(this,onComplete = onComplete)
     }
 }

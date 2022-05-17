@@ -24,8 +24,14 @@ class MainActivity : AppCompatActivity() {
                 observableEmitter.onNext(1)
             }
         })
+            .doOnSubscribe {
+                Log.d("testTag", "doOnSubscribe:${Thread.currentThread()} ")
+            }
             .subscribeOn(NewThreadScheduler())
             .observeOn(NewThreadScheduler())
+            .doOnNext {
+                Log.d("testTag", "doOnNext:${Thread.currentThread()} ")
+            }
             .subscribe(object : Observer<Int> {
                 override fun onSubscribe(disposable: Disposable) {
                     Log.d("testTag", "onSubscribe:${Thread.currentThread()}")
@@ -43,6 +49,7 @@ class MainActivity : AppCompatActivity() {
                     TODO("Not yet implemented")
                 }
             })
-        io.reactivex.Observable.create(ObservableOnSubscribe<Int> { TODO("Not yet implemented") }).subscribe()
+//        io.reactivex.Observable.create(ObservableOnSubscribe<Int> { TODO("Not yet implemented") })
+//            .doOnNext().subscribe()
     }
 }
